@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html id="wall">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>fjurp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="fjurp.css">
+    <script src="fjurp.js" defer></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <main id="tv">
+
+            <div id="tvScreen">
+                <video autoplay loop id="tvChannel">
+                <track id="subtitle" kind="subtitles" src="fjurp.000webhostapp.com/pizzacats.vtt" default>
+                </video>   
+            </div>
+
+
+            <p class="center">
+                <button id="button1"></button>
+                <button id="button2"></button>
+                <button id="button3"></button>
+                <button id="button4"></button>
+                <button id="button5"></button>
+                <button id="paintingbutton"></button>
+                <button id="buttonOff"></button>
+            </p>
+
+        </main>
+
+        <section>
+            <div id="paintingContainer"><!-- behövs för att videon ska hamna i ett block-element och kunna centreras
+            samt ta upp utrymme när den inte visas-->
+                <video autoplay controls loop id="painting" poster="munch.jpg">
+                </video>
+            </div>
+        </section>
+
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>
