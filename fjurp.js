@@ -102,27 +102,49 @@ function loadPainting() {
     }
 }
 
+document.getElementById("color").addEventListener("keyup", function (event) {
 
+    if (event.key !==8)  {//jag vill inte visa nya färger när någon suddar (backspace)
+        visaFargval()
+    };
+})
 
-
-function valjfarg() {
-    let valdfarg = document.querySelector("input.color").value;
+function visaFargval() {
+    let valdfarg = document.getElementById("color").value;
     let fargenfinns = false
+    let tvScreen = document.getElementById("tvScreen");
+    var tv = document.getElementById("tv");
+    // while (tvScreen.hasChildNodes()) {
+    //     tvScreen.removeChild(tvScreen.firstChild);
+    // }
+
     while (fargenfinns == false) {
         for (let i = 0; i < CSS_COLOR_NAMES.length; i++) {
 
-            if (valdfarg.toUpperCase() == CSS_COLOR_NAMES[i].toUpperCase()) {
-                document.body.style.backgroundColor = valdfarg;
-                fargenfinns = true;
-                break;
+
+            if (valdfarg != "" && CSS_COLOR_NAMES[i].toUpperCase().startsWith(valdfarg.toUpperCase())) {
+                nySpan = document.createElement("span");
+                nySpan.textContent = CSS_COLOR_NAMES[i] + "  ";
+                tvScreen.appendChild(nySpan);
+                nySpan.addEventListener("click", function () {
+                    tv.style.backgroundColor = CSS_COLOR_NAMES[i];
+                });
+        
             }
+            if (valdfarg.toUpperCase() == CSS_COLOR_NAMES[i].toUpperCase()) {
+                tv.style.backgroundColor = valdfarg;
+                fargenfinns = true;
+                nySpan.textContent ="";//funkar inte, fixa. 
+                break;
+                //när en existerande färg skrivits in ska inte fler förslag ges
+            }
+
         }
-        if (fargenfinns == false) {
-            alert("färgen finns inte");
-            break;
-        }
+        fargenfinns = true;
     }
 }
+
+
 
 loadPainting()
 
