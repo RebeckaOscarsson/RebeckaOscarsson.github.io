@@ -2,10 +2,9 @@ html {
   background-image: url(wallpaper.jpg);
   background-repeat: repeat;
   margin: 0;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 
-  /* om jag inte tar bort marginalen vill den scrolla. white-space gör så att mellanrum i koden inte räknas
- */
+/* om jag inte tar bort marginalen vill den scrolla. white-space gör så att mellanrum i koden inte räknas*/
 }
 
 body {
@@ -14,21 +13,25 @@ body {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
 
 .container {
-  /*grid med tre rader två kolumner (för tv:n och tavlan)*/
+  /*grid med en rad tre kolumner (för tv:n lampknappen och tavlan)*/
   display: grid;
-
   grid-template: 1fr / 1.8fr 0.2fr 1fr;
   min-height: 100vh;
 }
 
+/* ********************************************************************
+                        TV-APPARATEN
+******************************************************************** */
+
 #tv {
+
+  max-width:700px;
 
   align-self: flex-end;
   justify-self: center;
 
   grid-row: 1;
   grid-column: 1;
-
 
   display: flex;
   flex-direction: column;
@@ -46,12 +49,14 @@ body {
   box-shadow: inset 0px 0px 50px 10px black;
 }
 
-
-#tvScreen {
+div#tvScreen {
 
   display:grid; 
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-template-columns: 40vw;
+  /* minmax(1fr, 640px);  */
+  /* onödigt, kan vara bara 1fr */
+  grid-template-rows: 22.5vw;
+  /* min-content hindrar att tv:n hoppar men den blir oflexibel*/
   position:relative;
   /* fix för annars fattar inte safari overflow hidden */
 
@@ -69,10 +74,12 @@ body {
 
   border: solid rgb(30, 39, 17) 5px;
 
-  
+  padding:0;
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  max-height:360px;
   
 
   /* om jag inte sätter höjd och bredd blir videon dynamisk MEN tv:n lite lägre innan den sätts på */
@@ -81,7 +88,7 @@ body {
   padding-top: 56.25%;  */
 }
 
-#tvChannel {
+video#tvChannel {
 
   visibility: hidden;
   height: auto;
@@ -94,17 +101,15 @@ body {
   /* funkar nog inte */
  
   width: 640px;
+  /* height:360px; */
   display: block;
+  padding:0; margin:0;
   /* tar bort radbrytning efter */
 
   /* position: absolute;
   top: 0;
   left: 0;    */
 }
-
-
-
-
 
 button {
   box-shadow: inset 0px 5px 5px black;
@@ -113,7 +118,6 @@ button {
   background-color: olive;
   outline: none;
 }
-
 
 button:last-child {
   background-color: orangered;
@@ -138,7 +142,9 @@ button:hover {
   /*en flexcontainer som innehåller tv-knapparna*/
 }
 
-
+/* ********************************************************************
+                        TAVLAN
+******************************************************************** */
 
 section {
   /*gridcellen som innehåller tavlan*/
@@ -192,7 +198,7 @@ section video {
 
 .hidden {display:none}
 
-#color {
+input#color {
   grid-row: 1;
   grid-column: 1;
   display: none;
@@ -206,13 +212,18 @@ section video {
   outline: none;
 }
 
-#colorOptions {
+p#colorOptions {
   grid-row: 1;
   grid-column: 1;
-  max-width: 640px;
+  max-width:100%;
   cursor: pointer;
   background-color: black;
 }
+
+
+/* ********************************************************************
+                        MOBILVERSION
+******************************************************************** */
 
 @media only screen and (max-width: 550px) {
 
@@ -260,11 +271,8 @@ section video {
     display: none;
   }
 
-  
-
   .paintingContainer {
     margin-top: 0;
   }
 
 }
-

@@ -23,7 +23,7 @@ function changeVideo(videoName) {
 function changeBg() { //hur kan jag göra den som en loop?
     var wallpaper = ["wallpaper1.jpg", "wallpaper.jpg", "wallpaper4.jpg"]
     var n = Math.floor(Math.random() * 3);
-    document.getElementById("wall").style.backgroundImage = 'url(' + wallpaper[n] + ')'; //får inte till det med tagnamn
+    document.getElementsByTagName("html")[0].style.backgroundImage = 'url(' + wallpaper[n] + ')';
 }
 
 function showSub(subtitleFile) {
