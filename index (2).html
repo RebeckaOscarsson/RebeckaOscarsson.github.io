@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fjurp!</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="container">
+        <section>
+            <div class="painting">
+                <video autoplay controls loop id="paintingVideo" src="./videos/icewaves.mp4"
+                    poster="./images/munch.jpg">
+                </video>   
+            </div>
+            
+        </section>
+        <section>
+            <!-- <img src="./images/wallpaper4.jpg"> -->
+            <a href="two.html"><img src="./images/wallpaperFlower.png" ></a>
+            <a href="two.html"><img src="./images/lightswitch.png" class="lightswitch"></a>
+            <div class="clock"><img src="./images/minutvisare.png" height=120px class="minutes"></div>
+        </section>
+
+        <div class="tvContainer">
+            <img src="./images/tv.png" class="antenna">
+            
+            <div class="tv">
+                <div id="tvScreen">
+                    <div id="colorChange" class="hidden"><input type="text" id="color"></input>
+                        <p id="colorOptions"></p>
+                    </div>
+                    <video autoplay  loop id="tvVideo" src="./videos/icebells.mp4"></video>
+                </div>
+
+                <p class="buttonContainer">
+                    <button id="tvbutton"></button>
+                    <button id="button6"></button>
+                    <button id="paintingbutton"></button>
+                    <button id="buttonOff"></button>
+                </p>
+
+            </div> 
+        </div>
+        <footer><i class="fas fa-kiwi-bird"></i></footer>
+    </div>
+</body>
+
+</html>

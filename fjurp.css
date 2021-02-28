@@ -1,5 +1,5 @@
 html {
-  background-image: url(wallpaper.jpg);
+  background-image: url(./images/wallpaper.jpg);
   background-repeat: repeat;
   margin: 0;
   /* white-space: nowrap; */
@@ -69,7 +69,7 @@ div#tvScreen {
 
   background-color: rgb(27, 25, 25);
   box-shadow: inset 0 0 50px black;
-  background-image: url("static.gif");
+  background-image: url("./images/static.gif");
   border-radius: 50px;
 
   border: solid rgb(30, 39, 17) 5px;
