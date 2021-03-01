@@ -11,13 +11,22 @@
 
 body {
     font-family: 'Trebuchet MS', 'Verdana', sans-serif;
-    background-image: radial-gradient(darkgoldenrod, rgb(80, 56, 12));
-
+    background-image: radial-gradient(rgb(223, 197, 132), rgb(95, 80, 41));
+    overflow-x: hidden;
 }
 
 .hidden {
     display: none;
 }
+
+.new-wallpaper {
+    background-image: linear-gradient(90deg, transparent, var(--dark)), url("./images/wallpaperPink.jpg");
+}
+
+/* .responsive {
+    max-width: 100%;
+    height: auto;
+  } */
 
 /* *****************************
 -------------RUMMET------------
@@ -76,34 +85,59 @@ video {
 /* *****************************
 ----------HÖGRA VÄGGEN----------
 *******************************/
+.secretContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 45%;
+}
 
-.clock,
+.secretFlower {
+    width: 163px;
+    height: 157px;
+}
+
+.secretFlower:hover {
+    background-image: url("./images/wallpaperFlower.png");
+}
+
+.lightswitchAntenna {
+    display: flex;
+}
+
 .lightswitch {
-    margin: 5rem
+    align-self: center;
+    margin-left: -5vw;
 }
 
 .clock {
-    background-image: url("./images/clock2.png");
+    background-image: url("./images/clock.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 200px;
     height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    margin: 3vh 3vh 0 0;
+}
+
+.minutes,
+.hours {
+    grid-area: 1/1/2/2;
+    margin: auto;
 }
 
 /* *****************************
 -------------TAVLAN------------
 *******************************/
+
+
 .painting {
-    /* border: 1px solid pink;   */
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.painting {
     background-size: contain;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -117,6 +151,7 @@ video {
 
 #paintingVideo {
     height: 66%;
+    width: 68%;
 }
 
 footer>i {
@@ -147,11 +182,14 @@ i:hover {
 -------------TVN------------
 *******************************/
 
+.antenna {
+    display: block;
+    margin: auto;
+    max-height: 20vh;
+    min-height: 112px;
+}
+
 #tvVideo {
-    /* max-height: 360px;
-    max-width: 640px;
-    height: 33.75vh;
-    width: 60vh; */
     height: 100%;
     width: 100%;
 }
@@ -168,8 +206,8 @@ i:hover {
     background-color: rgb(27, 25, 25);
     border-radius: 50px;
     position: relative;
-    margin: 2em 0 8em 2em;
     /* fix för annars fattar inte safari overflow hidden */
+    margin: 2em 0 18% 2em;
 }
 
 
@@ -187,7 +225,11 @@ i:hover {
     grid-area: 1/2/2/3;
     align-self: flex-end;
     justify-self: center;
-    text-align: center;
+    align-content: center;
+    max-height: calc(100vh - 157px);
+    /* för att länkblomman ej ska hamna bakom*/
+    margin-left: 5vw;
+    /* för att lysknappen ej ska hamna på fel vägg*/
 }
 
 /* tv:n och tapeten ligger i samma gridcell med olika z-index för annars klipps tv:n av i botten */
@@ -209,7 +251,7 @@ button {
     box-shadow: inset 0px 5px 5px black;
     border-radius: 50%;
     padding: 1rem;
-    margin: 1rem;
+    margin: 0.7rem;
     background-color: darkslategray;
     outline: none;
     border: 3px solid black;
@@ -232,4 +274,32 @@ button:nth-last-child(2) {
 
 button:hover {
     background-color: teal;
+}
+
+/* *****************************
+-------------FÄRGVAL------------
+*******************************/
+#colorChange {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+input#colorInput {
+    background-color: wheat;
+    padding: 8px;
+    border-radius: 5px;
+    outline: none;
+    justify-self: flex-start;
+}
+
+p#colorOptions {
+    cursor: pointer;
+    margin: auto;
+    padding: 0 20px 0 20px
 }

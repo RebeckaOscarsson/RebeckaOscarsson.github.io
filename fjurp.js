@@ -130,9 +130,11 @@ function visaFargval() {
         for (let i = 0; i < CSS_COLOR_NAMES.length; i++) {
 
             if (valdfarg != "" && CSS_COLOR_NAMES[i].toUpperCase().startsWith(valdfarg.toUpperCase())) {
-                nySpan = document.createElement("span");
+                let nySpan = document.createElement("span");
                 nySpan.textContent = CSS_COLOR_NAMES[i] + "  ";
                 nySpan.style.color=CSS_COLOR_NAMES[i];
+                if (CSS_COLOR_NAMES[i].toUpperCase.includes("BLACK"))
+                {nySpan.style.bgColor="white"}
                 colorOptions.appendChild(nySpan);
                 nySpan.addEventListener("click", function () {
                     tv.style.backgroundColor = CSS_COLOR_NAMES[i];

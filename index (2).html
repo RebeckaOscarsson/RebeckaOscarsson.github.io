@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fjurp!</title>
+    <title>fjurp</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -23,28 +23,32 @@
             
         </section>
         <section>
-            <!-- <img src="./images/wallpaper4.jpg"> -->
-            <a href="two.html"><img src="./images/wallpaperFlower.png" ></a>
-            <a href="two.html"><img src="./images/lightswitch.png" class="lightswitch"></a>
-            <div class="clock"><img src="./images/minutvisare.png" height=120px class="minutes"></div>
+            <div class = secretContainer>
+            <a href="two.html"class="secretFlower">
+            </a>
+            
+        </div>
+            <div class="clock"><img src="./images/minutvisare.png" class="minutes"><img src="./images/timvisare.png" class="hours"></div>
         </section>
 
         <div class="tvContainer">
-            <img src="./images/tv.png" class="antenna">
+
+            <div class="lightswitchAntenna">
+            <img src="./images/lightswitch.png" class="lightswitch"><img src="./images/tv.png" class="antenna"></div>
             
             <div class="tv">
                 <div id="tvScreen">
-                    <div id="colorChange" class="hidden"><input type="text" id="color"></input>
+                    <div id="colorChange"><input type="text" id="colorInput"></input>
                         <p id="colorOptions"></p>
                     </div>
-                    <video autoplay  loop id="tvVideo" src="./videos/icebells.mp4"></video>
+                    <video loop id="tvVideo" src="./videos/icebells.mp4"></video>
                 </div>
 
                 <p class="buttonContainer">
-                    <button id="tvbutton"></button>
-                    <button id="button6"></button>
-                    <button id="paintingbutton"></button>
-                    <button id="buttonOff"></button>
+                    <button id="tvButton"></button>
+                    <button id="colorButton"></button>
+                    <button id="paintingButton"></button>
+                    <button id="offButton"></button>
                 </p>
 
             </div> 
