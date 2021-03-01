@@ -1,59 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fjurp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta name="robots" content="noindex, nofollow" />
-    <link rel="stylesheet" href="fjurp.css">
-    <script src="fjurp.js" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
 </head>
 
 <body>
-
     <div class="container">
 
-        <main id="tv">
-
-            <div id="tvScreen">
-                <input type="text" id="color"></input>
-                <p id="colorOptions"></p>
-                <video autoplay loop id="tvChannel">
+        <section>
+            <div class="painting">
+                <video loop id="paintingVideo" poster="./images/munch.jpg">
+                    You need a newer browser to watch this video.
                 </video>
             </div>
-
-
-            <p class="buttons">
-                <button id="button1"></button>
-                <button id="button2"></button>
-                <button id="button3"></button>
-                <button id="button4"></button>
-                <button id="button5"></button>
-                <button id="button6"></button>
-                <button id="paintingbutton"></button>
-                <button id="buttonOff"></button>
-            </p>
-
-        </main>
-
-        <aside><a href="two.html"><img src="./images/lightswitch.png" class="lightswitch"></a></aside>
-
+        </section>
+        
         <section>
-            <div class="paintingContainer">
-                <video autoplay controls loop id="painting" poster="./images/munch.jpg">
-                </video>
-                <img src="./images/frame.png" id="frame">
+            <a href="two.html" class="secretFlower"></a>
+
+            <div class="clock">
+                <img src="./images/minutvisare.png" class="minutes">
+                <img src="./images/timvisare.png" class="hours">
             </div>
         </section>
 
+        <div class="tvContainer">
 
+            <div class="lightswitchAntenna">
+                <img src="./images/lightswitch.png" class="lightswitch"><img src="./images/tv.png" class="antenna">
+            </div>
+
+            <div class="tv">
+                <div id="tvScreen">
+                    <div class="hidden colorChange"><input type="text" id="colorInput"></input>
+                        <p id="colorOptions"></p>
+                    </div>
+                    <video loop id="tvVideo" autoplay type="video/mp4" autoplay>
+                        You need a newer browser to watch this video.
+                    </video>
+                </div>
+                <p class="buttonContainer">
+                    <button id="tvButton"></button>
+                    <button id="paintingButton"></button>
+                    <button id="colorButton"></button>
+                    <button id="offButton"></button>
+                </p>
+            </div>
+
+        </div>
+
+        <footer><i class="fas fa-kiwi-bird" id="animal"></i></footer>
 
     </div>
-
-
-
-
 </body>
 
 </html>

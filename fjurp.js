@@ -98,8 +98,6 @@ function loadPainting() {
         var painting = document.getElementById("painting");
         painting.style.display = "block";
         painting.src = paintings[i];
-
-
     }
 }
 
