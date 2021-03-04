@@ -3,7 +3,8 @@ const tvButtons = document.querySelector(".buttonContainer");
 const lightswitch = document.querySelector(".lightswitch");
 const colorChange = document.querySelector(".colorChange");
 const tv = document.querySelector(".tv");
-let animal = document.querySelector("#animal")
+const animal = document.querySelector("#animal");
+const tvScreen = document.querySelector("#tvScreen");
 
 
 //eventlisteners
@@ -15,18 +16,11 @@ animal.addEventListener("mouseover", () => animal.classList.add("jump"));
 const tvVideo = document.querySelector("#tvVideo");
 const paintingVideo = document.querySelector("#paintingVideo");
 var paintings = ["./videos/water.mp4", "./videos/wind.mp4", "./videos/icewaves.mp4"];
-var tvChannels = ["./videos/wiggelysticks.mp4", "./videos/sun.mp4", "./videos/slowsun.mp4", "./videos/icebells.mp4", "./videos/green.mp4"];
+var tvChannels = ["./videos/wiggelysticks.MP4", "./videos/sun.mp4", "./videos/slowsun.mp4", "./videos/icebells.mp4", "./videos/green.mp4"];
 let tvCounter = 0;
 let paintingCounter = 0;
 
 setInterval(showTime(), 60000);
-
-
-//iife, körs när sidan laddas
-// (() => {
-
-// })()
-
 
 function deleteChildren(element) {
     while (element.hasChildNodes()) {
@@ -47,9 +41,9 @@ function showTime() {
 
     hourHand.style.transform = `rotate(${degreesHours})`
     minuteHand.style.transform = `rotate(${degreesMinutes})`
-    return showTime
+    return showTime//specialare för att det ska bli snyggare setInteval
 }
-//specialare för att det ska bli snyggare setInteval
+
 
 function changeWallpaper() {
     let walls = document.getElementsByTagName("section");
@@ -63,9 +57,8 @@ function changeWallpaper() {
 }
 
 function changeVideo(sources, videoElement, counter) {
-    deleteChildren(videoElement);
-    //tar bort alt-texten när det saknas stöd för video men orkar inte bry mig
-    if (counter == sources.length) {
+    deleteChildren(videoElement);//bort med gamla subtitles
+    if (counter >= sources.length) {
         counter = 0;
     };
     console.log("videourl: ", sources[counter]);
@@ -73,7 +66,7 @@ function changeVideo(sources, videoElement, counter) {
     if (sources[counter] == "./videos/icebells.mp4") {
         showSub("pizzacats.vtt")
     }
-    videoElement.play()
+    videoElement.play();
     counter++;
     return counter;
 }
@@ -101,9 +94,11 @@ function changeChannel(e) {
     let clickedButton = e.target.id;
     switch (clickedButton) {
         case "tvButton":
+            tvScreen.classList.add("blink");
             colorChange.classList.add("hidden");
             tvVideo.classList.remove("hidden");
             tvCounter = changeVideo(tvChannels, tvVideo, tvCounter);
+            tvScreen.classList.remove("blink")
             break;
         case "paintingButton":
             paintingCounter = changeVideo(paintings, paintingVideo, paintingCounter);

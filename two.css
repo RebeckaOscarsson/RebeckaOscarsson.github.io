@@ -20,7 +20,7 @@ html {
     margin:auto;
 }
 
-.sun:hover {color:red; transition:color 3s ease-in-out}
+
 
 @keyframes glow {
     from {
