@@ -41,7 +41,7 @@ function showTime() {
 
     hourHand.style.transform = `rotate(${degreesHours})`
     minuteHand.style.transform = `rotate(${degreesMinutes})`
-    return showTime//specialare för att det ska bli snyggare setInteval
+    return showTime //specialare för att det ska bli snyggare setInteval
 }
 
 
@@ -56,17 +56,61 @@ function changeWallpaper() {
     }
 }
 
-function changeVideo(sources, videoElement, counter) {
-    deleteChildren(videoElement);//bort med gamla subtitles
+// function playVideo(sources, videoElement)
+
+function changeTvVideo(sources, videoElement, counter) {
+    colorChange.classList.add("hidden");
+    tvScreen.classList.add("static");
+
+    deleteChildren(videoElement); //bort med gamla subtitles
     if (counter >= sources.length) {
         counter = 0;
     };
-    console.log("videourl: ", sources[counter]);
+    console.log("you are watching: ", sources[counter]);
     videoElement.src = sources[counter];
     if (sources[counter] == "./videos/icebells.mp4") {
         showSub("pizzacats.vtt")
     }
-    videoElement.play();
+    var isPlaying = videoElement.currentTime > 0 && !videoElement.paused && !videoElement.ended &&
+        videoElement.readyState > videoElement.HAVE_CURRENT_DATA;
+    if (isPlaying) {
+        videoElement.pause();
+        //för att slippa få fel att play har avbrutits
+    }
+    let playPromise = videoElement.play();
+    if (playPromise !== undefined) {
+        playPromise.then(_ => {
+                tvVideo.classList.remove("hidden");
+            })
+            .catch(error => {
+                console.log("Call tv repair man: ", error)
+            });
+    }
+    counter++;
+    return counter;
+}
+
+
+function changePaintingVideo(sources, videoElement, counter) {
+
+    deleteChildren(videoElement);
+    if (counter >= sources.length) {
+        counter = 0;
+    };
+    console.log("you are watching: ", sources[counter]);
+    var isPlaying = videoElement.currentTime > 0 && !videoElement.paused && !videoElement.ended &&
+        videoElement.readyState > videoElement.HAVE_CURRENT_DATA;
+    if (isPlaying) {
+        videoElement.pause()
+    }
+    videoElement.src = sources[counter];
+    let playPromise = videoElement.play();
+    if (playPromise !== undefined) {
+        playPromise
+            .catch(error => {
+                console.log("Call tv repair man: ", error)
+            });
+    }
     counter++;
     return counter;
 }
@@ -76,6 +120,7 @@ function turnOff() {
     tvVideo.pause();
     tvVideo.classList.add("hidden");
     paintingVideo.pause();
+    setTimeout(() => tvScreen.classList.remove("static"), 2000)
 }
 
 function showSub(subtitleFile) {
@@ -94,14 +139,10 @@ function changeChannel(e) {
     let clickedButton = e.target.id;
     switch (clickedButton) {
         case "tvButton":
-            tvScreen.classList.add("blink");
-            colorChange.classList.add("hidden");
-            tvVideo.classList.remove("hidden");
-            tvCounter = changeVideo(tvChannels, tvVideo, tvCounter);
-            tvScreen.classList.remove("blink")
+            tvCounter = changeTvVideo(tvChannels, tvVideo, tvCounter);
             break;
         case "paintingButton":
-            paintingCounter = changeVideo(paintings, paintingVideo, paintingCounter);
+            paintingCounter = changePaintingVideo(paintings, paintingVideo, paintingCounter);
             break;
         case "colorButton":
             tvVideo.pause();

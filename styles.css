@@ -1,10 +1,15 @@
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
 }
 
 :root {
     --shadow: rgba(0, 0, 0, 0.5);
+}
+
+div#preload {
+    display: none;
 }
 
 /* *****************************
@@ -20,17 +25,20 @@ body, html {
 }
 
 .blink {
-    -webkit-animation: blink 0.5s infinite alternate ease;
-    animation: blink 0.5s infinite alternate ease;
+    -webkit-animation: blink 0.6s infinite alternate;
+    animation: blink 0.6s infinite alternate;
 }
 
 @keyframes blink {
-    to {
+    to{box-shadow: inset 0 0 50px gray;}
+
+
+    /* to {
         box-shadow: inset 0 0 100px grey;
-    }
+    } */
 }
 
-
+.static {background-image: url("./images/static.gif");}
 
 /* *****************************
 -------------RUMMET------------
@@ -96,13 +104,14 @@ video {
 *******************************/
 
 .secretFlower {
-    width: 65px;
-    height: 83px;
+    width: 139px;
+    height: 154px;
 }
 
 .secretFlower:hover {
     background-image: url("./images/flower.png");
     background-repeat: no-repeat;
+    cursor: crosshair;
 }
 
 .lightswitchAntenna {
@@ -145,8 +154,8 @@ video {
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
-    height: 62.22vh;
-    width: 35vh;
+    height: 71.11vh;
+    width: 40vh;
     background-image: url("./images/frame.png");
     transform: rotateY(15deg);
 }
@@ -178,7 +187,6 @@ video {
     max-width: 640px;
     height: 33.75vh;
     width: 60vh;
-    background-image: url("./images/static.gif");
     overflow: hidden;
     border: solid rgb(30, 39, 17) 5px;
     box-shadow: inset 0 0 50px black;
@@ -206,7 +214,7 @@ video {
     grid-area: 1/2/2/3;
     align-self: flex-end;
     justify-self: center;
-    margin-top: 83px;
+    margin-top: 154px;
     /* för att länkblomman ej ska hamna bakom*/
     margin-left: 5vw;
     /* för att lysknappen ej ska hamna på fel vägg*/
@@ -239,15 +247,15 @@ button {
     outline: none;
     border: 3px solid black;
     cursor: pointer;
+    transition: background-color 0.4s;
 }
 
 button:last-child {
-    background-color: brown;
     border-radius: 10%;
 }
 
 button:last-child:hover {
-    background-color: orangered;
+    background-color: darkred;
 }
 
 button:nth-last-child(2) {
@@ -256,6 +264,7 @@ button:nth-last-child(2) {
 
 button:nth-last-child(2):hover {
     background-color: lightgray;
+    
 }
 
 button:hover {
@@ -301,6 +310,7 @@ p#colorOptions {
 *******************************/
 
 footer>i {
+    cursor: not-allowed;
     font-size: 40px;
     position: relative;
     top: -45px;
@@ -341,7 +351,7 @@ footer>i {
 }
 
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
 
     #tvScreen,
     .tv {
@@ -382,10 +392,12 @@ footer>i {
 
     section:first-of-type {
         padding: 0 0 5em 0;
-        align-items: flex-start;  
+        align-items: flex-start;
     }
 
-    footer, section:last-of-type, .lightswitchAntenna{
+    footer,
+    section:last-of-type,
+    .lightswitchAntenna {
         display: none;
     }
 
@@ -405,7 +417,7 @@ footer>i {
     #tvScreen {
         height: 42.19vw;
         width: 75vw;
-        margin:0.7rem 0.7rem 0 0.7rem;
+        margin: 1rem 1rem 0 1rem;
     }
 
     .tvContainer {
