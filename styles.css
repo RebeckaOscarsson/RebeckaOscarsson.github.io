@@ -1,3 +1,4 @@
+/* *{outline: black 1px solid; box-sizing: border-box;} */
 body,
 html {
     margin: 0;
@@ -24,7 +25,7 @@ div#preload {
     background-image: linear-gradient(90deg, transparent, var(--shadow)), url("./images/wallpaperPink.jpg");
 }
 
-.blink {
+/* .blink {
     -webkit-animation: blink 0.6s infinite alternate;
     animation: blink 0.6s infinite alternate;
 }
@@ -32,11 +33,7 @@ div#preload {
 @keyframes blink {
     to{box-shadow: inset 0 0 50px gray;}
 
-
-    /* to {
-        box-shadow: inset 0 0 100px grey;
-    } */
-}
+} */
 
 .static {background-image: url("./images/static.gif");}
 
@@ -81,11 +78,9 @@ section:first-of-type {
   } */
 
 section:last-of-type {
-    /* position: relative;
-    z-index: 0; */
-    /* av okänd anledning gör clip-path att section lägger sig överst utan denna fix*/
+    /* clip-path gör att section lägger sig överst*/
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: flex-start;
     grid-area: 1/2/2/3;
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 87%);
@@ -106,6 +101,7 @@ video {
 .secretFlower {
     width: 139px;
     height: 154px;
+    grid-area: 1/1/2/2;
 }
 
 .secretFlower:hover {
@@ -114,13 +110,9 @@ video {
     cursor: crosshair;
 }
 
-.lightswitchAntenna {
-    display: flex;
-}
-
 .lightswitch {
-    align-self: center;
-    margin-left: -5vw;
+    grid-area: 2/1/3/2;
+    margin-bottom: 200%;
 }
 
 .clock {
@@ -195,7 +187,6 @@ video {
     position: relative;
     /* fix för annars fattar inte safari overflow hidden */
     margin: 3vh 0 10vh 3vh
-        /* margin: 5% 0 18% 5%; */
 }
 
 .tv {
@@ -208,16 +199,19 @@ video {
     grid-template-columns: auto auto;
 }
 
+.antennaContainer {grid-area: 2/2/3/3; display:flex; flex-direction: column; align-self: flex-end;}
+
 .tvContainer {
+    align-items: center;
+    justify-items: center;
+    width:100%;
+    height:100%;
     position: relative;
     z-index: 1;
     grid-area: 1/2/2/3;
-    align-self: flex-end;
-    justify-self: center;
-    margin-top: 154px;
-    /* för att länkblomman ej ska hamna bakom*/
-    margin-left: 5vw;
-    /* för att lysknappen ej ska hamna på fel vägg*/
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
 }
 
 /* tv:n och section2 (tapeten på höger vägg) ligger i samma gridcell med olika z-index. om tv:n ligger i section klipps den av i botten */
@@ -232,10 +226,6 @@ video {
     align-items: center;
     justify-content: flex-start;
     padding: 2vh;
-
-    /* padding-left:5vh; */
-    /* margin: 5% 0 18% 5%; */
-    /* margin: 2em 1em 0 1em; */
 }
 
 button {
@@ -349,7 +339,6 @@ footer>i {
         transform: translatex(100vw);
     }
 }
-
 
 @media only screen and (max-width: 768px) {
 

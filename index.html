@@ -23,8 +23,6 @@
         </section>
 
         <section>
-            <a href="two.html" class="secretFlower"></a>
-
             <div class="clock">
                 <img src="./images/minutvisare.png" class="minutes">
                 <img src="./images/timvisare.png" class="hours">
@@ -32,24 +30,26 @@
         </section>
 
         <div class="tvContainer">
+            <a href="two.html" class="secretFlower"></a>
+            <img src="./images/lightswitch.png" class="lightswitch">
 
-            <div class="lightswitchAntenna">
-                <img src="./images/lightswitch.png" class="lightswitch"><img src="./images/tv.png" class="antenna">
-            </div>
-
-            <div class="tv">
-                <div id="tvScreen">
-                    <div class="hidden colorChange"><input type="text" id="colorInput" placeholder="favourite color:"></input>
-                        <p id="colorOptions"></p>
+            <div class="antennaContainer">
+                <img src="./images/tv.png" class="antenna">
+                <div class="tv">
+                    <div id="tvScreen">
+                        <div class="hidden colorChange"><input type="text" id="colorInput"
+                                placeholder="favourite color:"></input>
+                            <p id="colorOptions"></p>
+                        </div>
+                        <video loop id="tvVideo" type="video/mp4"></video>
                     </div>
-                    <video loop id="tvVideo" type="video/mp4"></video>
+                    <p class="buttonContainer">
+                        <button id="tvButton"></button>
+                        <button id="paintingButton"></button>
+                        <button id="colorButton"></button>
+                        <button id="offButton"></button>
+                    </p>
                 </div>
-                <p class="buttonContainer">
-                    <button id="tvButton"></button>
-                    <button id="paintingButton"></button>
-                    <button id="colorButton"></button>
-                    <button id="offButton"></button>
-                </p>
             </div>
 
         </div>
