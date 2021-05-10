@@ -6,6 +6,15 @@ const tv = document.querySelector(".tv");
 const animal = document.querySelector("#animal");
 const tvScreen = document.querySelector("#tvScreen");
 
+//hämtar eventuell sparad tv-färg från localStorage och laddar den
+let savedColor = localStorage.getItem("savedColor");
+if (savedColor) {
+    tv.style.backgroundColor = savedColor
+};
+
+//hämtar vald tapet
+let savedWallpaper = localStorage.getItem("savedWallpaper");
+if (savedWallpaper) {changeWallpaper()}
 
 //eventlisteners
 lightswitch.addEventListener("click", changeWallpaper);
@@ -44,22 +53,23 @@ function showTime() {
     return showTime //specialare för att det ska bli snyggare setInteval
 }
 
-
 function changeWallpaper() {
     let walls = document.getElementsByTagName("section");
     walls[0].classList.toggle("new-wallpaper");
     walls[1].classList.toggle("new-wallpaper");
     if (!lightswitch.src.includes("Click")) {
         lightswitch.src = "./images/lightswitchClick.png"
+        localStorage.setItem("savedWallpaper", true);
     } else {
         lightswitch.src = "./images/lightswitch.png"
+        localStorage.removeItem("savedWallpaper");
     }
 }
 
 // function playVideo(sources, videoElement)
 
 function changeTvVideo(sources, videoElement, counter) {
-    colorChange.classList.add("hidden");
+    // colorChange.classList.add("hidden");
     tvScreen.classList.add("static");
 
     deleteChildren(videoElement); //bort med gamla subtitles
@@ -75,7 +85,7 @@ function changeTvVideo(sources, videoElement, counter) {
         videoElement.readyState > videoElement.HAVE_CURRENT_DATA;
     if (isPlaying) {
         videoElement.pause();
-        //för att slippa få fel att play har avbrutits
+        //för att slippa få fel i konsoll att play har avbrutits
     }
     let playPromise = videoElement.play();
     if (playPromise !== undefined) {
@@ -116,11 +126,10 @@ function changePaintingVideo(sources, videoElement, counter) {
 }
 
 function turnOff() {
-    colorChange.classList.add("hidden");
     tvVideo.pause();
     tvVideo.classList.add("hidden");
     paintingVideo.pause();
-    setTimeout(() => tvScreen.classList.remove("static"), 2000)
+    setTimeout(() => tvScreen.classList.remove("static"), 2500)
 }
 
 function showSub(subtitleFile) {
@@ -136,6 +145,9 @@ function showSub(subtitleFile) {
 
 
 function changeChannel(e) {
+    document.querySelectorAll("button").forEach(button => {
+        button.classList.add("transition")
+    });
     let clickedButton = e.target.id;
     switch (clickedButton) {
         case "tvButton":
@@ -145,9 +157,7 @@ function changeChannel(e) {
             paintingCounter = changePaintingVideo(paintings, paintingVideo, paintingCounter);
             break;
         case "colorButton":
-            tvVideo.pause();
-            tvVideo.classList.add("hidden");
-            colorChange.classList.remove("hidden");
+            changeColor()
             break;
         case "offButton":
             turnOff()
@@ -157,192 +167,13 @@ function changeChannel(e) {
     }
 }
 
-document.getElementById("colorInput").addEventListener("keyup", function (event) {
-    if (event.key !== 8) { //jag vill inte visa nya färger när någon suddar (backspace)
-        visaFargval()
-    };
-})
-
-function visaFargval() {
-    let valdfarg = document.getElementById("colorInput").value;
-    let fargenfinns = false
-    const colorOptions = document.getElementById("colorOptions");
-    deleteChildren(colorOptions);
-
-    while (fargenfinns == false) {
-        for (let i = 0; i < CSS_COLOR_NAMES.length; i++) {
-
-            if (valdfarg != "" && CSS_COLOR_NAMES[i].toLowerCase().startsWith(valdfarg.toLowerCase())) {
-                nySpan = document.createElement("span");
-                nySpan.textContent = CSS_COLOR_NAMES[i] + "  ";
-                nySpan.style.color = CSS_COLOR_NAMES[i];
-                if (CSS_COLOR_NAMES[i].toLowerCase() == "black") {
-                    nySpan.style.backgroundColor = "white"
-                }
-                colorOptions.appendChild(nySpan);
-                nySpan.addEventListener("click", function () {
-                    tv.style.backgroundColor = CSS_COLOR_NAMES[i];
-                });
-            }
-            if (valdfarg.toLowerCase() == CSS_COLOR_NAMES[i].toLowerCase()) {
-                tv.style.backgroundColor = valdfarg;
-                fargenfinns = true;
-                deleteChildren(colorOptions);
-                break;
-                //när en existerande färg skrivits in ska inte fler förslag ges utan det byts färg direkt
-            }
-        }
-        fargenfinns = true;
-    }
+function randomVal(min, max) {
+    return Math.floor(Math.random() * (max - min) + 1) + min;
 }
 
-const CSS_COLOR_NAMES = [
-    "AliceBlue",
-    "AntiqueWhite",
-    "Aqua",
-    "Aquamarine",
-    "Azure",
-    "Beige",
-    "Bisque",
-    "Black",
-    "BlanchedAlmond",
-    "Blue",
-    "BlueViolet",
-    "Brown",
-    "BurlyWood",
-    "CadetBlue",
-    "Chartreuse",
-    "Chocolate",
-    "Coral",
-    "CornflowerBlue",
-    "Cornsilk",
-    "Crimson",
-    "Cyan",
-    "DarkBlue",
-    "DarkCyan",
-    "DarkGoldenRod",
-    "DarkGray",
-    "DarkGrey",
-    "DarkGreen",
-    "DarkKhaki",
-    "DarkMagenta",
-    "DarkOliveGreen",
-    "DarkOrange",
-    "DarkOrchid",
-    "DarkRed",
-    "DarkSalmon",
-    "DarkSeaGreen",
-    "DarkSlateBlue",
-    "DarkSlateGray",
-    "DarkSlateGrey",
-    "DarkTurquoise",
-    "DarkViolet",
-    "DeepPink",
-    "DeepSkyBlue",
-    "DimGray",
-    "DimGrey",
-    "DodgerBlue",
-    "FireBrick",
-    "FloralWhite",
-    "ForestGreen",
-    "Fuchsia",
-    "Gainsboro",
-    "GhostWhite",
-    "Gold",
-    "GoldenRod",
-    "Gray",
-    "Grey",
-    "Green",
-    "GreenYellow",
-    "HoneyDew",
-    "HotPink",
-    "IndianRed",
-    "Indigo",
-    "Ivory",
-    "Khaki",
-    "Lavender",
-    "LavenderBlush",
-    "LawnGreen",
-    "LemonChiffon",
-    "LightBlue",
-    "LightCoral",
-    "LightCyan",
-    "LightGoldenRodYellow",
-    "LightGray",
-    "LightGrey",
-    "LightGreen",
-    "LightPink",
-    "LightSalmon",
-    "LightSeaGreen",
-    "LightSkyBlue",
-    "LightSlateGray",
-    "LightSlateGrey",
-    "LightSteelBlue",
-    "LightYellow",
-    "Lime",
-    "LimeGreen",
-    "Linen",
-    "Magenta",
-    "Maroon",
-    "MediumAquaMarine",
-    "MediumBlue",
-    "MediumOrchid",
-    "MediumPurple",
-    "MediumSeaGreen",
-    "MediumSlateBlue",
-    "MediumSpringGreen",
-    "MediumTurquoise",
-    "MediumVioletRed",
-    "MidnightBlue",
-    "MintCream",
-    "MistyRose",
-    "Moccasin",
-    "NavajoWhite",
-    "Navy",
-    "OldLace",
-    "Olive",
-    "OliveDrab",
-    "Orange",
-    "OrangeRed",
-    "Orchid",
-    "PaleGoldenRod",
-    "PaleGreen",
-    "PaleTurquoise",
-    "PaleVioletRed",
-    "PapayaWhip",
-    "PeachPuff",
-    "Peru",
-    "Pink",
-    "Plum",
-    "PowderBlue",
-    "Purple",
-    "RebeccaPurple",
-    "Red",
-    "RosyBrown",
-    "RoyalBlue",
-    "SaddleBrown",
-    "Salmon",
-    "SandyBrown",
-    "SeaGreen",
-    "SeaShell",
-    "Sienna",
-    "Silver",
-    "SkyBlue",
-    "SlateBlue",
-    "SlateGray",
-    "SlateGrey",
-    "Snow",
-    "SpringGreen",
-    "SteelBlue",
-    "Tan",
-    "Teal",
-    "Thistle",
-    "Tomato",
-    "Turquoise",
-    "Violet",
-    "Wheat",
-    "White",
-    "WhiteSmoke",
-    "Yellow",
-    "YellowGreen",
-];
+function changeColor() {
+    tv.classList.add("colorfade");
+    var randomColor = 'hsl(' + randomVal(0, 360) + ', ' + randomVal(10, 60) + '%,  ' + randomVal(20, 60) + '%)';
+    tv.style.backgroundColor = randomColor;
+    localStorage.setItem("savedColor", randomColor)
+}

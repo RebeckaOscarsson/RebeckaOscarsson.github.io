@@ -1,16 +1,50 @@
 /* *{outline: black 1px solid; box-sizing: border-box;} */
+:root {
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
 body,
 html {
     margin: 0;
     padding: 0;
 }
 
-:root {
-    --shadow: rgba(0, 0, 0, 0.5);
-}
-
 div#preload {
     display: none;
+}
+
+#animal,
+.lightswitch,
+.antenna,
+section:last-of-type,
+.secretFlower {
+    display: none;
+}
+
+/* kan egentligen flytta till desktop */
+.clock {
+    background-image: url("./images/clock.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 25vh;
+    height: 25vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-content: center;
+    margin: 3vh 3vh 0 0;
+}
+
+.hours {
+    height: 50%;
+    margin: auto;
+    grid-area: 1/1/2/2;
+}
+
+.minutes {
+    height: 60%;
+    margin: auto;
+    grid-area: 1/1/2/2;
 }
 
 /* *****************************
@@ -21,122 +55,45 @@ div#preload {
     display: none;
 }
 
-.new-wallpaper {
-    background-image: linear-gradient(90deg, transparent, var(--shadow)), url("./images/wallpaperPink.jpg");
+.static {
+    background-image: url("./images/static.gif");
 }
-
-/* .blink {
-    -webkit-animation: blink 0.6s infinite alternate;
-    animation: blink 0.6s infinite alternate;
-}
-
-@keyframes blink {
-    to{box-shadow: inset 0 0 50px gray;}
-
-} */
-
-.static {background-image: url("./images/static.gif");}
 
 /* *****************************
 -------------RUMMET------------
 *******************************/
 body {
-    font-family: 'Trebuchet MS', 'Verdana', sans-serif;
-    background-color: burlywood;
     background-image: url("./images/wood.jpg");
     background-repeat: repeat;
     overflow-x: hidden;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr auto;
-    height: 100vh;
-    min-height: 100vh;
-}
-
 section {
     display: flex;
-    background-image: url("./images/wallpaperGreen.jpg");
-    /* fallback */
-    background-image: linear-gradient(90deg, transparent, var(--shadow)), url("./images/wallpaperGreen.jpg");
 }
 
+/* väggbiten med tavlan på */
 section:first-of-type {
+    grid-area: 1/1/2/2;
     align-items: flex-start;
     justify-content: center;
-    grid-area: 1/1/2/2;
-    border-right: black solid 2px;
-    clip-path: polygon(0 0, 100% 0%, 100% 87%, 0% 100%);
-    padding-top: 7%;
-    perspective: 400px;
-}
-
-/* sass: .half-black {
-    background: rgba(black, 0.5);
-  } */
-
-section:last-of-type {
-    /* clip-path gör att section lägger sig överst*/
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    grid-area: 1/2/2/3;
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 87%);
-}
-
-footer {
-    grid-area: 2/1/3/3;
 }
 
 video {
     outline: none;
 }
 
-/* *****************************
------GREJOR PÅ HÖGRA VÄGGEN-----
-*******************************/
-
-.secretFlower {
-    width: 139px;
-    height: 154px;
-    grid-area: 1/1/2/2;
-}
-
-.secretFlower:hover {
-    background-image: url("./images/flower.png");
-    background-repeat: no-repeat;
-    cursor: crosshair;
-}
-
-.lightswitch {
-    grid-area: 2/1/3/2;
-    margin-bottom: 200%;
-}
-
-.clock {
-    background-image: url("./images/clock.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 200px;
-    height: 200px;
+.container {
+    background-image: linear-gradient(90deg, transparent, var(--shadow)), url("./images/wallpaperGreen.jpg");
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    margin: 3vh 3vh 0 0;
-}
-
-.minutes,
-.hours {
-    grid-area: 1/1/2/2;
-    margin: auto;
+    grid-template-rows: auto auto;
+    min-height: 100vh;
 }
 
 /* *****************************
 -------------TAVLAN------------
 *******************************/
-
 
 .painting {
     display: flex;
@@ -146,10 +103,9 @@ video {
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
-    height: 71.11vh;
-    width: 40vh;
+    height: 88.9vw;
+    width: 50vw;
     background-image: url("./images/frame.png");
-    transform: rotateY(15deg);
 }
 
 #paintingVideo {
@@ -162,23 +118,12 @@ video {
 -------------TVN------------
 *******************************/
 
-.antenna {
-    display: block;
-    margin: auto;
-    max-height: 20vh;
-    min-height: 112px;
-}
-
 #tvVideo {
     height: 100%;
     width: 100%;
 }
 
 #tvScreen {
-    max-height: 360px;
-    max-width: 640px;
-    height: 33.75vh;
-    width: 60vh;
     overflow: hidden;
     border: solid rgb(30, 39, 17) 5px;
     box-shadow: inset 0 0 50px black;
@@ -186,7 +131,6 @@ video {
     border-radius: 50px;
     position: relative;
     /* fix för annars fattar inte safari overflow hidden */
-    margin: 3vh 0 10vh 3vh
 }
 
 .tv {
@@ -194,38 +138,23 @@ video {
     border-radius: 60px;
     border: 5px solid rgb(30, 39, 17);
     box-shadow: inset 0px 0px 50px 10px black;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: auto auto;
+    align-content: center;
+    display: flex;
+    flex-flow: column wrap;
+    margin:3%;
 }
 
-.antennaContainer {grid-area: 2/2/3/3; display:flex; flex-direction: column; align-self: flex-end;}
+.colorfade {
+    transition: background-color 3s;
+}
+
+.transition {
+    transition: all 0.4s;
+}
 
 .tvContainer {
-    align-items: center;
-    justify-items: center;
-    width:100%;
-    height:100%;
-    position: relative;
-    z-index: 1;
-    grid-area: 1/2/2/3;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: auto 1fr;
-}
-
-/* tv:n och section2 (tapeten på höger vägg) ligger i samma gridcell med olika z-index. om tv:n ligger i section klipps den av i botten */
-
-/* *****************************
-----------TV-KNAPPAR------------
-*******************************/
-
-.buttonContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 2vh;
 }
 
 button {
@@ -237,180 +166,257 @@ button {
     outline: none;
     border: 3px solid black;
     cursor: pointer;
-    transition: background-color 0.4s;
 }
 
 button:last-child {
     border-radius: 10%;
+    background-color: sienna;
 }
 
 button:last-child:hover {
-    background-color: darkred;
+    background-color: brown;
 }
 
 button:nth-last-child(2) {
     background-color: slategray;
 }
 
-button:nth-last-child(2):hover {
-    background-color: lightgray;
-    
+button:active {
+    padding: 1.5vh;
+    margin: 1.5vh;
 }
 
-button:hover {
-    background-color: teal;
-}
-
-/* *****************************
--------------FÄRGVAL------------
-*******************************/
-.colorChange {
-    height: 100%;
-    width: 100%;
-    background-color: black;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.colorChange.hidden {
-    display: none;
-}
-
-input#colorInput {
-    background-color: rgb(31, 31, 31);
-    padding: 8px;
-    border-radius: 5px;
-    color: beige;
-    border: 1px solid gray;
-    justify-self: flex-start;
-    margin-top: 2%;
-}
-
-p#colorOptions {
-    cursor: pointer;
-    margin: auto;
-    padding: 0 20px 0 20px
-}
-
-/* *****************************
--------------KIWI!<3-----------
-*******************************/
-
-footer>i {
-    cursor: not-allowed;
-    font-size: 40px;
+/*väggbiten med tv:n*/
+.rightContainer {
+    grid-area: 2/1/3/2;
     position: relative;
-    top: -45px;
-    left: 60px;
+    z-index: 1;
 }
 
-.jump {
-    -webkit-animation: jump 0.2s alternate infinite ease-in-out, moveRight 10s 1 linear forwards;
-    animation: jump 0.2s alternate infinite ease-in-out, moveRight 10s 1 linear forwards;
+footer {
+    grid-area: 2/1/3/2;
+    background-image: url("./images/wood.jpg");
+    position: relative;
+    z-index: 0;
+    height: 40%;
+    align-self: flex-end;
 }
 
-@-webkit-keyframes jump {
-    to {
-        -webkit-transform: translatey(-20px);
-        transform: translatey(-20px);
-    }
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 2vh;
+    margin: 0;
+    justify-content: center;
 }
 
-@keyframes jump {
-    to {
-        -webkit-transform: translatey(-20px);
-        transform: translatey(-20px);
-    }
+#tvScreen {
+    height: 42.19vw;
+    width: 75vw;
+    margin: 1rem 1rem 0 1rem;
 }
 
-@-webkit-keyframes moveRight {
-    to {
-        -webkit-transform: translatex(100vw);
-        transform: translatex(100vw);
-    }
-}
+/* *****************************************************************************************************************
+-----mobil/padda landsacape-------
+********************************************************************************************************************/
 
-@keyframes moveRight {
-    to {
-        -webkit-transform: translatex(100vw);
-        transform: translatex(100vw);
-    }
-}
+@media only screen and (min-width: 568px) and (orientation: landscape) {
 
-@media only screen and (max-width: 768px) {
+    /* *****************************
+---Läggs på med javascript-----
+*******************************/
 
-    #tvScreen,
-    .tv {
-        border-radius: 30px;
-        border-width: 2px;
+    .new-wallpaper {
+        background-image: linear-gradient(90deg, transparent, var(--shadow)), url("./images/wallpaperPink.jpg");
     }
 
-    .tvContainer {
-        margin: 0 1em
-    }
-
-    .lightswitch {
-        max-height: 70px;
-        margin-left: 0;
-    }
-
-    .clock {
-        max-height: 120px;
-        max-width: 120px;
-    }
-
-    .hours {
-        max-height: 60px;
-    }
-
-    .minutes {
-        max-height: 80px;
-    }
-}
-
-@media only screen and (max-width: 768px) and (orientation: portrait) {
-
+    /* *****************************
+-------------RUMMET------------
+*******************************/
     .container {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+        background: none;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr auto;
+        height: 100vh;
+    }
+
+    section {
+        background-image: url("./images/wallpaperGreen.jpg");/* fallback */ 
+        background-image: linear-gradient(90deg, transparent, var(--shadow)), url("./images/wallpaperGreen.jpg");
     }
 
     section:first-of-type {
-        padding: 0 0 5em 0;
-        align-items: flex-start;
+        justify-content: center;
+        border-right: black solid 2px;
+        clip-path: polygon(0 0, 100% 0%, 100% 87%, 0% 100%);
+        padding-top: 7%;
+        perspective: 400px;
     }
 
-    footer,
-    section:last-of-type,
-    .lightswitchAntenna {
-        display: none;
-    }
 
-    .tv {
+    section:last-of-type {
+        /* clip-path gör att section lägger sig överst*/
         display: flex;
-        flex-flow: column wrap;
-        margin-top: -5em;
+        justify-content: flex-end;
+        align-items: flex-start;
+        grid-area: 1/2/2/3;
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 87%);
     }
 
-    .buttonContainer {
-        flex-direction: row;
-        padding: 1rem;
-        margin: 0;
-        justify-content: space-evenly;
+    footer {
+        display: block;
+        grid-area: 2/1/3/3;
+        height: auto;
+        align-self: stretch;
+    }
+
+    /* *****************************
+-----GREJOR PÅ HÖGRA VÄGGEN-----
+*******************************/
+
+    .secretFlower {
+        display: block;
+        width: 139px;
+        height: 154px;
+        grid-area: 1/1/2/2;
+    }
+
+    .secretFlower:hover {
+        background-image: url("./images/flower.png");
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+
+    .lightswitch {
+        height: 70px;
+        margin-left: 14%;
+        display: block;
+        grid-area: 2/1/3/2;
+        margin-top: 10vh;
+        justify-self: flex-end;
+        align-self: flex-start;
+    }
+
+    /* *****************************
+-------------TAVLAN------------
+*******************************/
+
+    .painting {
+        height: 71.11vh;
+        width: 40vh;
+        transform: rotateY(15deg);
+    }
+
+    /* *****************************
+-------------TVN------------
+*******************************/
+
+    .antenna {
+        display: block;
+        margin: auto;
+        max-height: 20vh;
+        min-height: 112px;
     }
 
     #tvScreen {
-        height: 42.19vw;
-        width: 75vw;
-        margin: 1rem 1rem 0 1rem;
+        max-height: 360px;
+        max-width: 640px;
+        height: 33.75vh;
+        width: 60vh;
+        margin: 3vh 0 10vh 3vh
+    }
+
+    .tv {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: auto auto;
+        margin:0; 
     }
 
     .tvContainer {
-        margin: auto
+        grid-area: 2/2/3/3;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        justify-self: center;
     }
 
+    .rightContainer {
+        width: 100%;
+        height: 100%;
+        grid-area: 1/2/2/3;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        grid-template-columns: auto 1fr;
+        padding: 0;
+    }
+
+    /* tv:n och section2 (tapeten på höger vägg) ligger i samma gridcell med olika z-index. om tv:n ligger i section klipps den av i botten */
+
+    /* *****************************
+----------TV-KNAPPAR------------
+*******************************/
+
+    .buttonContainer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+/* *****************************************************************************************************************
+-----dätor!-------
+********************************************************************************************************************/
+
+    @media only screen and (min-width: 768px) and (orientation: landscape) {
+
+        .lightswitch {
+            height: auto;
+        }
+
+        /* *****************************
+-------------KIWI!<3-----------
+*******************************/
+
+        #animal {
+            display: block;
+            font-size: 40px;
+            position: relative;
+            top: -100%;
+            left: 60px;
+        }
+
+        .jump {
+            -webkit-animation: jump 0.2s alternate infinite ease-in-out, moveRight 10s 1 linear forwards;
+            animation: jump 0.2s alternate infinite ease-in-out, moveRight 10s 1 linear forwards;
+        }
+
+        @-webkit-keyframes jump {
+            to {
+                -webkit-transform: translatey(-20px);
+                transform: translatey(-20px);
+            }
+        }
+
+        @keyframes jump {
+            to {
+                -webkit-transform: translatey(-20px);
+                transform: translatey(-20px);
+            }
+        }
+
+        @-webkit-keyframes moveRight {
+            to {
+                -webkit-transform: translatex(100vw);
+                transform: translatex(100vw);
+            }
+        }
+
+        @keyframes moveRight {
+            to {
+                -webkit-transform: translatex(100vw);
+                transform: translatex(100vw);
+            }
+        }
+
+    }
 }

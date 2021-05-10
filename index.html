@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>fjurp</title>
-    <script src="script.js" defer></script>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" />
+        
+    <script src="script.js" async defer></script>
 </head>
 
 <body>
@@ -29,18 +31,18 @@
             </div>
         </section>
 
-        <div class="tvContainer">
+        <div class="rightContainer">
             <a href="two.html" class="secretFlower"></a>
             <img src="./images/lightswitch.png" class="lightswitch">
 
-            <div class="antennaContainer">
+            <div class="tvContainer">
                 <img src="./images/tv.png" class="antenna">
                 <div class="tv">
                     <div id="tvScreen">
-                        <div class="hidden colorChange"><input type="text" id="colorInput"
+                        <!-- <div class="hidden colorChange"><input type="text" id="colorInput"
                                 placeholder="favourite color:"></input>
                             <p id="colorOptions"></p>
-                        </div>
+                        </div> -->
                         <video loop id="tvVideo" type="video/mp4"></video>
                     </div>
                     <p class="buttonContainer">
@@ -51,7 +53,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
 
         <footer><i class="fas fa-kiwi-bird" id="animal"></i>
