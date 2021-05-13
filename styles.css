@@ -217,10 +217,11 @@ footer {
 }
 
 /* *****************************************************************************************************************
------mobil/padda landsacape-------
+-----mobil/padda landscape-------
 ********************************************************************************************************************/
 
 @media only screen and (min-width: 568px) and (orientation: landscape) {
+
 
     /* *****************************
 ---Läggs på med javascript-----
@@ -274,18 +275,7 @@ footer {
 -----GREJOR PÅ HÖGRA VÄGGEN-----
 *******************************/
 
-    .secretFlower {
-        display: block;
-        width: 139px;
-        height: 154px;
-        grid-area: 1/1/2/2;
-    }
-
-    .secretFlower:hover {
-        background-image: url("./images/flower.png");
-        background-repeat: no-repeat;
-        cursor: pointer;
-    }
+    
 
     .lightswitch {
         height: 70px;
@@ -311,12 +301,7 @@ footer {
 -------------TVN------------
 *******************************/
 
-    .antenna {
-        display: block;
-        margin: auto;
-        max-height: 20vh;
-        min-height: 112px;
-    }
+    
 
     #tvScreen {
         max-height: 360px;
@@ -372,6 +357,28 @@ footer {
         .lightswitch {
             height: auto;
         }
+
+
+
+.antenna {
+    display: block;
+    margin: auto;
+    max-height: 20vh;
+    min-height: 112px;
+}
+
+.secretFlower {
+    display: block;
+    width: 139px;
+    height: 154px;
+    grid-area: 1/1/2/2;
+}
+
+.secretFlower:hover {
+    background-image: url("./images/flower.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
 
         /* *****************************
 -------------KIWI!<3-----------

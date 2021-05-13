@@ -25,7 +25,7 @@ animal.addEventListener("mouseover", () => animal.classList.add("jump"));
 const tvVideo = document.querySelector("#tvVideo");
 const paintingVideo = document.querySelector("#paintingVideo");
 var paintings = ["./videos/water.mp4", "./videos/wind.mp4", "./videos/icewaves.mp4"];
-var tvChannels = ["./videos/wiggelysticks.MP4", "./videos/sun.mp4", "./videos/slowsun.mp4", "./videos/icebells.mp4", "./videos/green.mp4"];
+var tvChannels = ["./videos/wiggelysticks.MP4", "./videos/sun.mp4", "./videos/slowsun.mp4", "./videos/icebells.mp4", "./videos/icebubbles.mp4", "./videos/green.mp4"];
 let tvCounter = 0;
 let paintingCounter = 0;
 
@@ -66,10 +66,7 @@ function changeWallpaper() {
     }
 }
 
-// function playVideo(sources, videoElement)
-
 function changeTvVideo(sources, videoElement, counter) {
-    // colorChange.classList.add("hidden");
     tvScreen.classList.add("static");
 
     deleteChildren(videoElement); //bort med gamla subtitles
@@ -173,7 +170,7 @@ function randomVal(min, max) {
 
 function changeColor() {
     tv.classList.add("colorfade");
-    var randomColor = 'hsl(' + randomVal(0, 360) + ', ' + randomVal(10, 60) + '%,  ' + randomVal(20, 60) + '%)';
+    var randomColor = 'hsl(' + randomVal(0, 360) + ', ' + randomVal(10, 50) + '%,  ' + randomVal(30, 50) + '%)';
     tv.style.backgroundColor = randomColor;
     localStorage.setItem("savedColor", randomColor)
 }
