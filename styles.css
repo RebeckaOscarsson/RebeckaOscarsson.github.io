@@ -125,7 +125,7 @@ video {
 
 #tvScreen {
     overflow: hidden;
-    border: solid rgb(30, 39, 17) 5px;
+    border: solid black 3px;
     box-shadow: inset 0 0 50px black;
     background-color: rgb(63, 60, 60);
     border-radius: 50px;
@@ -136,12 +136,12 @@ video {
 .tv {
     background-color: rgb(122, 109, 91);
     border-radius: 60px;
-    border: 5px solid rgb(30, 39, 17);
+    border: 3px solid black;
     box-shadow: inset 0px 0px 50px 10px black;
     align-content: center;
     display: flex;
     flex-flow: column wrap;
-    margin:3%;
+    margin: 3%;
 }
 
 .colorfade {
@@ -242,7 +242,8 @@ footer {
     }
 
     section {
-        background-image: url("./images/wallpaperGreen.jpg");/* fallback */ 
+        background-image: url("./images/wallpaperGreen.jpg");
+        /* fallback */
         background-image: linear-gradient(90deg, transparent, var(--shadow)), url("./images/wallpaperGreen.jpg");
     }
 
@@ -275,7 +276,7 @@ footer {
 -----GREJOR PÅ HÖGRA VÄGGEN-----
 *******************************/
 
-    
+
 
     .lightswitch {
         height: 70px;
@@ -301,7 +302,7 @@ footer {
 -------------TVN------------
 *******************************/
 
-    
+
 
     #tvScreen {
         max-height: 360px;
@@ -315,7 +316,7 @@ footer {
         display: grid;
         grid-template-rows: 1fr;
         grid-template-columns: auto auto;
-        margin:0; 
+        margin: 0;
     }
 
     .tvContainer {
@@ -348,7 +349,7 @@ footer {
         justify-content: flex-start;
     }
 
-/* *****************************************************************************************************************
+    /* *****************************************************************************************************************
 -----dätor!-------
 ********************************************************************************************************************/
 
@@ -360,25 +361,25 @@ footer {
 
 
 
-.antenna {
-    display: block;
-    margin: auto;
-    max-height: 20vh;
-    min-height: 112px;
-}
+        .antenna {
+            display: block;
+            margin: auto;
+            max-height: 20vh;
+            min-height: 112px;
+        }
 
-.secretFlower {
-    display: block;
-    width: 139px;
-    height: 154px;
-    grid-area: 1/1/2/2;
-}
+        .secretFlower {
+            display: block;
+            width: 139px;
+            height: 154px;
+            grid-area: 1/1/2/2;
+        }
 
-.secretFlower:hover {
-    background-image: url("./images/flower.png");
-    background-repeat: no-repeat;
-    cursor: pointer;
-}
+        .secretFlower:hover {
+            background-image: url("./images/flower.png");
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
 
         /* *****************************
 -------------KIWI!<3-----------
