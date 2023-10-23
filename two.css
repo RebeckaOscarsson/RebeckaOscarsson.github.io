@@ -50,6 +50,19 @@
     animation: play 0.3s steps(5) infinite;
 }
 
+.color1
+{
+    filter: hue-rotate(-30deg)  saturate(2) drop-shadow(0 0 2rem rgb(220, 217, 20));
+}
+
+.color2 {
+    filter: grayscale(1) drop-shadow(0 0 1.75rem crimson);
+}
+
+.color3 {
+    filter: hue-rotate(160deg) saturate(4);
+}
+
 
 
 @keyframes slide {
