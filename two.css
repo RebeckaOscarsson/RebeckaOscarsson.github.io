@@ -4,14 +4,15 @@
     top: 8vw;
     height: 18.5vw;
     width: 28vw;
-    background: url('fårloopfonster.png');
+    background: url('farloop.png');
     background-size: cover;
     opacity:0;
     transition: opacity 0.7s;
+    z-index:1;
 }
 
 .sheepWindow:hover {
-    opacity:1;
+    opacity:0.9;
     cursor: pointer;
     transition: opacity 0.7s;  
 }
@@ -26,33 +27,42 @@
     transition: opacity 0.7s;  
     background: url('koloop.png');
     background-size: cover;
+    z-index:1;
 }
 
 .cowWindow:hover {
-    opacity:1;   
+    opacity:0.9;   
     animation: playCow 1.8s steps(3) infinite;
+    /* , slide 0.5s; */
     transition: opacity 0.7s;  
 }
 
 .slow
 {
-    animation: play 1.8s steps(8) infinite;
+    animation: play 1.8s steps(5) infinite;
 }
 
 .medium {
-    animation: play 0.8s steps(8) infinite;
+    animation: play 0.8s steps(5) infinite;
 }
 
 .fast {
-    animation: play 0.3s steps(8) infinite;
+    animation: play 0.3s steps(5) infinite;
 }
 
 
+
+@keyframes slide {
+    /* 0% {transform: translateX(-100%);}
+    100% {transform: translateX(0%);} */
+    0% {left:0;}
+    100% {left:8.5vw;}
+}
 
 @keyframes play {
     5% {background-position-y: 0%;}
     100% {
-        background-position-y: -800%;
+        background-position-y: -500%;
     }
 }
 
@@ -60,23 +70,38 @@
     50% {background-position-x: -300%;}
     100% {
         background-position-x: -300%;
+        left: 8.5vw;
     }
 }
 
 
 body {
     margin: 0;
-    padding-top:15em;
+    /* padding-top:15em; */
     background-image: url(BerlinBuilding.jpg);
     background-repeat: repeat-y;
-    background-size: contain;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    min-height: 300vh;
+    background-size: cover;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;  
 }
 
 
 html {
-    background-color:rgb(31, 2, 32)
+    min-height: 1vh;
+}
+
+.overlay {
+    margin: 0;
+    pointer-events: none;
+    /* padding-top:15em; */
+    background-image: url(BerlinBuilding.png);
+    background-repeat: repeat-y;
+    background-size: cover;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    position:absolute;
+    top: 0; left: 0;
+    width:100vw;
+    height:100vh;
+    z-index:2;  
 }
 
 .sun {
